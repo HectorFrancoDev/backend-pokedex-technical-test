@@ -1,0 +1,1 @@
+from .pokemon_route import pokemon_bp

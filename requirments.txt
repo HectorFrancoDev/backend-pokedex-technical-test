@@ -1,0 +1,5 @@
+# Libraries to install
+
+Flask=latest-version
+request=latest-version
+python-dotenv=1.0.0
