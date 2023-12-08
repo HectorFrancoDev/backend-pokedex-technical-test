@@ -3,10 +3,10 @@
 This API provides access to data about Pokémon from the official Pokémon API.
 
 ---
-Author: Héctor Franco
-website: <https://hectorfranco.dev>
-email: <contact@hectorfranco.dev>
-Created on: Dec 10th 2023
+- Author: Héctor Franco
+- website: <https://hectorfranco.dev>
+- email: <contact@hectorfranco.dev>
+- Created on: Dec 10th 2023
 ___
 
 ## Endpoints
