@@ -1,5 +1,6 @@
 from flask import Flask
 from flask_cors import CORS
+from gevent.pywsgi import WSGIServer
 from dotenv import load_dotenv
 from .routes import pokemon_bp
 
@@ -23,5 +24,6 @@ class Server:
 
     def run(self):
         """_summary_"""
-        self.app.run()
-        
+        # self.app.run()
+        http_server = WSGIServer(('', 5000), self.app)
+        http_server.serve_forever()        
