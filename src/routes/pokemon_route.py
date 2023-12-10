@@ -8,7 +8,7 @@ from ..models import Pokemon
 URL = os.environ.get("ENDPOINT", "")
 
 # Crea el blueprint para la API
-pokemon_bp = Blueprint("/", __name__)
+pokemon_bp = Blueprint("/api", __name__)
 
 
 # La ruta que devuelve todos los Pokémon

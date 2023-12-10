@@ -3,6 +3,8 @@ from flask_cors import CORS
 from gevent.pywsgi import WSGIServer
 from dotenv import load_dotenv
 from .routes import pokemon_bp
+from .routes import welcome_bp
+
 
 class Server:
     def __init__(self):
@@ -12,7 +14,6 @@ class Server:
         load_dotenv()
         # Create Flask app
         self.app = Flask(__name__)
-        # self.app.testing = True
         # Activate CORS
         CORS(self.app)
         # Blueprint
@@ -20,10 +21,11 @@ class Server:
 
     def blueprints(self):
         """_summary_"""
+        self.app.register_blueprint(welcome_bp, url_prefix="/")
         self.app.register_blueprint(pokemon_bp, url_prefix="/api")
 
     def run(self):
         """_summary_"""
-        # self.app.run()
+        # self.app.run(debug=True)
         http_server = WSGIServer(('', 5000), self.app)
-        http_server.serve_forever()        
+        http_server.serve_forever()
