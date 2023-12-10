@@ -25,7 +25,7 @@ source venv/bin/activate
 ```
 ### Install dependencies
 ```bash
-pip3 install flask flask-cors requests python-dotenv
+$bash pip install -r requirements.txt 
 ```
 
 ### Create .env file
