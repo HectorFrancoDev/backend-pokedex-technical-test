@@ -5,23 +5,23 @@ from .routes import pokemon_bp
 
 class Server:
     def __init__(self):
-        """Constructor method __init__
-        """
+        """Constructor method __init__"""
+
         # Load the environment variables
         load_dotenv()
         # Create Flask app
         self.app = Flask(__name__)
+        # self.app.testing = True
+        # Activate CORS
         CORS(self.app)
-        # Blueprint 
+        # Blueprint
         self.blueprints()
 
     def blueprints(self):
-        """_summary_
-        
-        """
-        self.app.register_blueprint(pokemon_bp, url_prefix='/api')
+        """_summary_"""
+        self.app.register_blueprint(pokemon_bp, url_prefix="/api")
 
     def run(self):
-        """_summary_
-        """
+        """_summary_"""
         self.app.run(debug=True)
+        

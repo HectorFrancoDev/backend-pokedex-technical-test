@@ -8,7 +8,7 @@ from ..models import Pokemon
 URL = os.environ.get("ENDPOINT", "")
 
 # Crea el blueprint para la API
-pokemon_bp = Blueprint("/pokemon", __name__)
+pokemon_bp = Blueprint("/", __name__)
 
 
 # La ruta que devuelve todos los Pokémon
@@ -19,9 +19,10 @@ def get_all_pokemon():
     Returns:
         JSON: Returns the data in JSON format
     """
+    query = request.args.to_dict(flat=False)
 
     # Realiza la solicitud HTTP a la API de PokeAPI
-    response = requests.get(f"{URL}")
+    response = requests.get(URL, params=query)
 
     # Si la solicitud fue exitosa
     if response.status_code == 200:

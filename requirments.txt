@@ -1,5 +1,7 @@
 # Libraries to install
 
-Flask=latest-version
-request=latest-version
-python-dotenv=1.0.0
+pip3 install flask
+pip3 install flask-cors
+pip3 install requests 
+pip3 install python-dotenv
+pip3 install pytest
