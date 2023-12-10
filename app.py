@@ -1,5 +1,8 @@
 from src.server import Server
 
-# if __name__ == "__main__":
+# Instanziate a Server() object
 server = Server()
-server.run()
+
+# Execute server.run()
+if __name__ == "__main__":
+    server.run()
