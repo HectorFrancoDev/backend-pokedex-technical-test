@@ -23,5 +23,5 @@ class Server:
 
     def run(self):
         """_summary_"""
-        self.app.run(debug=True)
+        self.app.run()
         
