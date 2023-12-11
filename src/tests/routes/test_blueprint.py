@@ -14,20 +14,20 @@ class PokemonBlueprintTestCase(unittest.TestCase):
 
     @patch("src.server")
     def test_get_all_pokemon_success(self, mock_requests_get):
-        """Prueba que la ruta '/pokemon' devuelve todos los Pokémon correctamente."""
-        # Configura el comportamiento simulado de la solicitud HTTP
+        """Test that the '/pokemon' route returns all Pokémon."""
+        # Set up the simulated behavior of the HTTP request
         mock_requests_get.return_value.status_code = 200
-        # Realiza una solicitud GET a la ruta '/pokemon'
+        # Make a GET request to the '/pokemon' route
         response = self.test_app.get("/pokemon")
 
-        # Verifica que la solicitud sea exitosa (código de estado 200) y devuelve datos de Pokémon
+        # Verify that the request is successful (status code 200) and returns Pokémon data
         self.assertEqual(response.status_code, 200)
         self.assertEqual(response.content_type, "application/json")
 
     @patch("src.server")
     def test_get_pokemon_by_name_success(self, mock_requests_get):
-        """Prueba que la ruta '/pokemon/<name>' devuelve un Pokémon por su nombre correctamente."""
-        # Configura el comportamiento simulado de la solicitud HTTP
+        """Test that the '/pokemon/<name>' route returns a Pokémon by its name successfully."""
+        # Set up the simulated behavior of the HTTP request
         mock_requests_get.return_value.status_code = 200
         mock_requests_get.return_value.json.return_value = {
             "id": 1,
@@ -37,10 +37,10 @@ class PokemonBlueprintTestCase(unittest.TestCase):
             "sprites": {"front_default": "url-to-image"},
         }
 
-        # Realiza una solicitud GET a la ruta '/pokemon/bulbasaur'
+        # Make a GET request to the '/pokemon/bulbasaur' route
         response = self.test_app.get("/pokemon/bulbasaur")
 
-        # Verifica que la solicitud sea exitosa (código de estado 200) y devuelve datos del Pokémon
+        # Verify that the request is successful (status code 200) and returns Pokémon data
         self.assertEqual(response.status_code, 200)
         expected_json = {
             "id": 1,

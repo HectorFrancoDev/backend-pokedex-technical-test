@@ -3,7 +3,8 @@
 - Author: Héctor Franco
 - website: <https://hectorfranco.dev>
 - email: <contact@hectorfranco.dev>
-- Created on: Dec 10th 2023
+- Last edit: Dec 10th 2023
+- Postman Documentation: [Postman API Production](https://documenter.getpostman.com/view/31664787/2s9Ykhg4W4)
 ___
 
 ## Setup and run
@@ -11,17 +12,17 @@ Before executing this server, you must setup correctly the project. Follow the s
 
 ### Create environment
 ```bash
-python3 -m venv venv
+$bash: python3 -m venv venv
 ```
 ### Activate environment
 
 #### Mac users
 ```bash
-source venv/bin/activate
+$bash: source venv/bin/activate
 ```
 #### Windows users
 ```bash
-.\venv\scripts\activate
+cmd: .\venv\scripts\activate
 ```
 ### Install dependencies
 ```bash
@@ -33,7 +34,7 @@ Create an **.env** file at the root of the project with the environment variable
 
 ### Run server
 ```bash
-python3 app.py
+$bash: python3 app.py
 ```
 
 After that, a local server will start running on http://127.0.0.1:5000
@@ -61,7 +62,7 @@ This API provides access to data about Pokémon from the official Pokémon API.
 * **Parameters:**
     * `name`: The ID or the name of the Pokémon.
 * **Response:**
-    * Object containing detailed Pokémon information:
+    * `JSON`: Object containing detailed Pokémon information:
       id, name, types, abilities, sprites.
 
 ### Example Usage
@@ -70,24 +71,24 @@ This API provides access to data about Pokémon from the official Pokémon API.
 
 Get the first 20 Pokemon
 ```bash
-curl -X GET http://localhost:5000/api/pokemon
+$bash: curl -X GET http://localhost:5000/api/pokemon
 ```
 Get the first 40 Pokemon
 ```bash
-curl -X GET http://localhost:5000/api/pokemon?limit=40
+$bash: curl -X GET http://localhost:5000/api/pokemon?limit=40
 ```
 Starts brining the list since the Pokemon #15 (15 to 35)
 ```bash
-curl -X GET http://localhost:5000/api/pokemon?offset=15
+$bash: curl -X GET http://localhost:5000/api/pokemon?offset=15
 ```
 Brings 10 Pokeomon starting at position #40 (40 to 50)
 ```bash
-curl -X GET http://localhost:5000/api/pokemon?limit=10&offset=40
+$bash: curl -X GET http://localhost:5000/api/pokemon?limit=10&offset=40
 ```
 #### Get an specific Pokémon:
 
 ```bash
-curl -X GET http://localhost:5000/api/pokemon/1
+$bash: curl -X GET http://localhost:5000/api/pokemon/1
 ```
 ___
 
@@ -96,7 +97,7 @@ Unit tests can be found at *src.tests*. Here are the steps to running them.
 
 ### Install pytest or unittest
 ```bash
-pip3 install pytest
+$bash: pip3 install pytest
 ```
 Unittest should be installed before and can be execute as a module
 ### Execute the Unit Tests

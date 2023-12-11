@@ -7,11 +7,11 @@ from ..models import Pokemon
 # ENDPOINT URL
 URL = os.environ.get("ENDPOINT", "")
 
-# Crea el blueprint para la API
+# Create the Blueprint /api route
 pokemon_bp = Blueprint("/api", __name__)
 
 
-# La ruta que devuelve todos los Pokémon
+# Returns all the Pokemon
 @pokemon_bp.route("/pokemon", methods=["GET"])
 def get_all_pokemon():
     """Get and list all Pokémons available
@@ -21,19 +21,19 @@ def get_all_pokemon():
     """
     query = request.args.to_dict(flat=False)
 
-    # Realiza la solicitud HTTP a la API de PokeAPI
+    # Make the HTTPS request to the Pokedex ENDPOINT
     response = requests.get(URL, params=query)
 
-    # Si la solicitud fue exitosa
+    # If the request succeed
     if response.status_code == 200:
-        # Devuelve los datos de todos los Pokémon
+        # Returns the Pokemon list in JSON form
         return jsonify(response.json().get("results", [])), 200
     else:
-        # Devuelve un mensaje de error
+        # Returns an error in JSON format
         return {"error": "No se pudo obtener los Pokémones"}, 404
 
 
-# La ruta que devuelve un Pokémon por su ID o nombre
+# Returns an specific Pokemon information
 @pokemon_bp.route("/pokemon/<string:name>", methods=["GET"])
 def get_pokemon_by_name(name):
     """Get an specific Pokémon by ID or name:
@@ -46,22 +46,23 @@ def get_pokemon_by_name(name):
         Pokemon: Returns the data in JSON format
     """
 
-    # Realiza la solicitud HTTP a la API de PokeAPI
+    # Make the HTTPS request to the Pokedex ENDPOINT
     response = requests.get(f"{URL}/{name.strip()}")
 
-    # Si la solicitud fue exitosa
+    # If the request succeed
     if response.status_code == 200:
-        # Devuelve los datos del Pokémon
         id = response.json()["id"]
         name = response.json()["name"]
         types = response.json()["types"]
         abilities = response.json()["abilities"]
         sprites = response.json()["sprites"]
 
+        # Instance a Pokemon() object
         pokemon = Pokemon(id, name, types, abilities, sprites)
 
+        # Returns the Pokemon info in JSON format
         return jsonify(pokemon.to_json()), 200
 
     else:
-        # Devuelve un mensaje de error
+        # Returns an error in JSON format
         return {"error": f"No se encontró el Pokémon {name}"}, 404
