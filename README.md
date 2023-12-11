@@ -5,6 +5,7 @@
 - email: <contact@hectorfranco.dev>
 - Last edit: Dec 10th 2023
 - Postman Documentation: [Postman API Production](https://documenter.getpostman.com/view/31664787/2s9Ykhg4W4)
+- Server on Production mode: <https://backend-pokedex-technical-test.onrender.com/>
 ___
 
 ## Setup and run
